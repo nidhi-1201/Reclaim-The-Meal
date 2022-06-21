@@ -1,6 +1,9 @@
 package com.ReclaimTheMeal;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import org.springframework.stereotype.Controller;
@@ -26,12 +29,19 @@ public class AppController {
 
 	@PostMapping("/process_register")
 	public String processRegistration(User user) {
-		
-	     
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+	    String encodedPassword = encoder.encode(user.getPassword());
+	    user.setPassword(encodedPassword);
+	    
 	   repo.save(user);
 	     
 	    return "register_success";
 	}
-	
+	@GetMapping("/list_users")
+	public String viewUsersList(Model model) {
+		List<User> listUsers = repo.findAll();
+	model.addAttribute("listUsers", listUsers);
+		return "users";
+	}
 	}
 
