@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th=http://www.thymeleaf.org
+xmlns:sec=http://www.thymeleaf.org/extras/spring-security
+xmlns:shiro=http://www.pollix.at/thymeleaf/shiro>
+  <head>
+    <meta charset="ISO-8859-1">
+    <title>Reclaim The Meal </title>
+    <link rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+      crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="container">
+      <h1>Post</h1>
+      <hr>
+      <h2>Save Post</h2>
+      <form action="#" th:action="@{/save}" th:object="${post}"
+        method="POST">
+        <input type="text" th:field="*{title}"
+          placeholder="Post Title" class="form-control mb-4 col-4">
+
+        <input type="text" th:field="*{description}"
+          placeholder="Description" class="form-control mb-4 col-4">
+
+        <input type="text" th:field="*{location}"
+          placeholder="Location" class="form-control mb-4 col-4">
+
+        <label>State: </label>
+        <div>
+        <label for="state">Active</label>
+          <input type="radio" th:field="*{state}" name= "active" class="form-control mb-4 col-4" id="active" value="true"> 
+          <label for="state">Inactive</label>
+          <input type="radio" th:field="*{state}" name= "inactive" class="form-control mb-4 col-4" id="inactive" value="false">
+        </div>
+        <input type="datetime-local" th:field="*{timeStart}"
+          placeholder="Start Time" class="form-control mb-4 col-4">
+
+        <input type="datetime-local" th:field="*{timeEnd}"
+          placeholder="End Time" class="form-control mb-4 col-4">
+
+        <button type="submit" class="btn btn-info col-2"> Save Post</button>
+      </form>
+      <hr>
+      <a th:href = "@{/}"> Back to Post List</a>
+    </div>
+  </body>
+</html>
