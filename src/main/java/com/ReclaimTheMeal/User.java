@@ -1,11 +1,6 @@
 package com.ReclaimTheMeal;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name="users")
@@ -56,6 +51,14 @@ public class User {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	
-
+	// @OneToMany(targetEntity = Post.class,cascade = CascadeType.ALL)
+	// private List<Post> posts;
+	// public List<Post> getPosts()   
+    // {  
+    //     return posts;  
+    // }  
+    // public void setPosts(List<Post> posts)   
+    // {  
+    //     this.posts = posts;  
+    // }
 }
