@@ -10,9 +10,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
+
 public class PostController {
     @Autowired    
     private PostService postService;  
@@ -66,7 +68,7 @@ public class PostController {
     @GetMapping("/posts")
     public String viewPosts(Model model) {
         List<Post> posts = postService.getAllPosts();
-        model.addAttribute("posts", posts);
+        model.addAttribute("listPosts", posts);
         return "homepage";
     }
 
