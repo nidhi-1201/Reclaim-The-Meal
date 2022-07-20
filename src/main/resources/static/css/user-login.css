@@ -1,0 +1,90 @@
+
+/*.btn1{
+  border-radius: 50px;
+  background-color: #AAF683;
+  border: none;
+  color: #000;
+  text-align: center;
+  font-size: 24px;
+  padding: -10px;
+  width: 180px;
+  height: 50px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin-top: 20px;
+  margin-left: 200px;
+  box-shadow: 0 10px 20px -8px rgba(0, 0, 0,.7);
+}
+.btn1{
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}*/
+/*.btn1:after {
+  content: '»';
+  position: absolute;
+  font-size: 44px;
+  font-weight: bold;
+  opacity: 0;
+  top: -9px;
+  //right: 50px;
+  transition: 0.5s;
+}
+.btn1:hover{
+  padding-right: 24px;
+  padding-left:8px;
+}
+.btn1:hover:after {
+  opacity: 1;
+  right: 10px;
+}*/
+
+input[type=email],[type=password]{
+  width: 240px;
+}
+.btn{
+  border-radius: 50px;
+  background-color: #AAF683;
+  border: none;
+  color: #000;
+  text-align: center;
+  font-size: 24px;
+  padding-top: 0px;
+  width: 180px;
+  height: 45px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin-left: 0px;
+  box-shadow: 0 10px 20px -8px rgba(0, 0, 0,.7);
+}
+.btn{
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+  color: black;
+}
+.btn:after {
+  content: '»';
+  position: absolute;
+  font-size: 26px;
+  font-weight: bold;
+  opacity: 0;
+  top: 0px;
+  right: 15px;
+  transition: 0.5s;
+}
+.btn:hover{
+  padding-right: 24px;
+  padding-left:8px;
+  color:black;
+}
+.btn:hover:after {
+  opacity: 1;
+  right: 10px;
+  color: black;
+}
+.btn a:hover{
+  color: black;
+}

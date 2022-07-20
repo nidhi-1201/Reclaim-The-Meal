@@ -33,6 +33,7 @@ public class AppController {
 	    user.setPassword(encodedPassword);
 	    
 	   repo.save(user);
+	//    new EmailSend().send(user.getEmail());
 	     
 	    return "register_success";
 	}
