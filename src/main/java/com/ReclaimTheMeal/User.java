@@ -1,9 +1,5 @@
 package com.ReclaimTheMeal;
 
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
-
 import javax.persistence.*;
 
 @Entity
@@ -31,15 +27,6 @@ public class User {
 	@Column(nullable = false, length = 20)
 	private String lastName;
 	
-	@ManyToMany(fetch = FetchType.EAGER) 
-    @JoinTable( 
-        name = "users_roles", 
-        joinColumns = @JoinColumn(
-          name = "user_id", referencedColumnName = "id"), 
-        inverseJoinColumns = @JoinColumn(
-          name = "role_id", referencedColumnName = "id")) 
-	private Set<Role> roles = new HashSet<>();
-	
 	public Long getId() {
 		return id;
 	}
@@ -64,15 +51,6 @@ public class User {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	
-	public void addRole(Role role) {
-        this.roles.add(role);
-	}
-	
-	public Set<Role> getRoles() {
-		return this.roles;
-	}
-	
 	// @OneToMany(targetEntity = Post.class,cascade = CascadeType.ALL)
 	// private List<Post> posts;
 	// public List<Post> getPosts()   
