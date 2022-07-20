@@ -66,7 +66,7 @@ public class PostController {
     @GetMapping("/posts")
     public String viewPosts(Model model) {
         List<Post> posts = postService.getAllPosts();
-        model.addAttribute("posts", posts);
+        model.addAttribute("listPosts", posts);
         return "homepage";
     }
 
