@@ -1,32 +1,54 @@
 <!DOCTYPE html>
-<html>
-    <head>
-
-    </head>
-    <body>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Welcome to ReclaimTheMeal Home</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container text-center">
+        <div><h1>Welcome to Reclaim The Meal</h1></div>
+        <div>
+        <h3><a th:href="@{/list_users}">List Of Posts</a></h3>
+            <div>
+    <form th:action="@{/logout}" method="post">
+    <input type="submit" value="Sign Out" />
+    </form></div>
+     
+    <div class="container my-2">
+        <h1>Posts</h1>
+        
+        <a th:href = "@{/add}" class="btn btn-primary btn-sm mb-3"> Add Post </a>
+        
         <table border="1" class = "table table-striped table-responsive-md">
             <thead>
             <tr>
             <th>
-                Title
+                <a th:href="@{'/page/' + ${currentPage} + '?sortField=courseName&sortDir=' + ${reverseSortDir}}">
+                Title</a>
             </th>
             <th>
-                Description
+                <a th:href="@{'/page/' + ${currentPage} + '?sortField=instructor&sortDir=' + ${reverseSortDir}}">
+                Description</a>
             </th>
             <th>
-                                Start Time
+                <a th:href="@{'/page/' + ${currentPage} + '?sortField=email&sortDir=' + ${reverseSortDir}}">
+                Start Time</a>
             </th>
             <th> 
-                                End Time
-                </th>
+                <a th:href="@{'/page/' + ${currentPage} + '?sortField=email&sortDir=' + ${reverseSortDir}}">
+                End Time
+                </a></th>
             </tr>
             </thead>
             <tbody>
-            <tr th:each="post : ${posts}">
+            <tr th:each="post : ${listPosts}">
             <td th:text="${post.title}"></td>
             <td th:text="${post.description}"></td>
-            <td th:text="${post.timeStart}"></td>
-            <td th:text="${post.timeEnd}"></td>
+            <td th:text="${post.startTime}"></td>
+            <td th:text="${post.endTime}"></td>
             <td th:text="${post.location}"></td>
             <td th:text="${post.state}"></td>
             <td> <a th:href="@{/update/{id}(id=${post.id})}" class="btn btn-primary">Update</a>
@@ -35,5 +57,29 @@
             </tr>
             </tbody>
         </table>
-    </body>
+        
+        <div th:if = "${totalPages > 1}">
+            <div class = "row col-sm-10">
+            <div class = "col-sm-5">
+                Total Rows: [[${totalItems}]]
+            </div>
+            <div class = "col-sm-3">
+                            <span th:each="i: ${#numbers.sequence(1, totalPages)}">
+                                <a th:if="${currentPage != i}" th:href="@{'/page/' + ${i}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">[[${i}]]</a>
+                                <span th:unless="${currentPage != i}">[[${i}]]</span>  
+                            </span>
+            </div>
+            <div class = "col-sm-1">
+                <a th:if="${currentPage < totalPages}" th:href="@{'/page/' + ${currentPage + 1}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Next</a>
+                <span th:unless="${currentPage < totalPages}">Next</span>
+            </div>
+        
+            <div class="col-sm-1">
+                <a th:if="${currentPage < totalPages}" th:href="@{'/page/' + ${totalPages}+ '?sortField=' + ${sortField} + '&sortDir=' + ${sortDir}}">Last</a>
+                <span th:unless="${currentPage < totalPages}">Last</span>
+            </div>
+            </div>
+        </div>
+        </div>
+</body>
 </html>
