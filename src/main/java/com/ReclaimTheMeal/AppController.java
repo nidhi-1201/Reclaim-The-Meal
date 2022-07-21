@@ -9,8 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import java.util.ArrayList;
-import java.util.Collection;
 import javax.servlet.http.HttpSession;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -46,7 +44,7 @@ public class AppController {
 	    Role role = rolesRepo.getReferenceById(2L);
 	    user.addRole(role);
 	   repo.save(user);
-	   new EmailSend().send(user.getEmail());
+	//    new EmailSend().send(user.getEmail());
 	     
 	    return "register_success";
 	}
