@@ -1,4 +1,6 @@
-
+h1{
+  margin-left: 65px;
+}
 /*.btn1{
   border-radius: 50px;
   background-color: #AAF683;
@@ -22,7 +24,7 @@
   transition: 0.5s;
 }*/
 /*.btn1:after {
-  content: '»';
+  content: 'ï¿½';
   position: absolute;
   font-size: 44px;
   font-weight: bold;
@@ -39,7 +41,10 @@
   opacity: 1;
   right: 10px;
 }*/
+<<<<<<< HEAD
 
+=======
+>>>>>>> development
 input[type=email],[type=password]{
   width: 240px;
 }
@@ -55,7 +60,11 @@ input[type=email],[type=password]{
   height: 45px;
   transition: all 0.5s;
   cursor: pointer;
+<<<<<<< HEAD
   margin-left: 0px;
+=======
+  margin-left: 45px;
+>>>>>>> development
   box-shadow: 0 10px 20px -8px rgba(0, 0, 0,.7);
 }
 .btn{
@@ -66,7 +75,7 @@ input[type=email],[type=password]{
   color: black;
 }
 .btn:after {
-  content: '»';
+  content: 'ï¿½';
   position: absolute;
   font-size: 26px;
   font-weight: bold;
