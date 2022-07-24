@@ -15,7 +15,7 @@ xmlns:shiro=http://www.pollix.at/thymeleaf/shiro>
       <h1>Post</h1>
       <hr>
       <h2>Save Post</h2>
-      <form action="#" th:action="@{/save}" th:object="${post}"
+      <form action="#" th:action="@{/posts/save}" th:object="${post}"
         method="POST">
         <input type="text" th:field="*{title}"
           placeholder="Post Title" class="form-control mb-4 col-4">
