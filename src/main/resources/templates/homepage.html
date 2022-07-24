@@ -51,8 +51,8 @@
             <td th:text="${post.endTime}"></td>
             <td th:text="${post.location}"></td>
             <td th:text="${post.state}"></td>
-            <td> <a th:href="@{/update/{id}(id=${post.id})}" class="btn btn-primary">Update</a>
-                <a th:href="@{/delete/{id}(id=${post.id})}" class="btn btn-danger">Delete</a>
+            <td> <a th:href="@{/posts/update/{id}(id=${post.id})}" class="btn btn-primary">Update</a>
+                <a th:href="@{/posts/delete/{id}(id=${post.id})}" class="btn btn-danger">Delete</a>
             </td>
             </tr>
             </tbody>

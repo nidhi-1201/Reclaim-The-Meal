@@ -17,57 +17,9 @@ public class PostController {
     @Autowired    
     private PostService postService;  
             
-    // @RequestMapping("/postform")    
-    // public String showPostForm(Model m){    
-    //     m.addAttribute("command", new Post());  
-    //     return "postform";   
-    // }    
-    // /*It saves object into database. The @ModelAttribute puts request data  
-    //  *  into model object. You need to mention RequestMethod.POST method   
-    //  *  because default request is GET*/    
-    // @RequestMapping(value="/save",method = RequestMethod.POST)    
-    // public String save(@ModelAttribute("post") Post p){    
-    //     post.save(p);    
-    //     return "redirect:/viewpost";  
-    // }    
-    // /* It provides list of employees in model object */    
-    // @RequestMapping("/viewpost")    
-    // public String viewemp(Model m){    
-    //     List<Post> list=post.getPosts();    
-    //     m.addAttribute("list",list);  
-    //     return "viewpost";    
-    // }    
-    // /* It displays object data into form for the given id.   
-    //  * The @PathVariable puts URL data into variable.*/    
-    // @RequestMapping(value="/editpost/{id}")    
-    // public String edit(@PathVariable int id, Model m){    
-    //     Post p = (Post) post.getPostById(id);    
-    //     m.addAttribute("command",p);  
-    //     return "posteditform";    
-    // }    
-    // /* It updates model object. */    
-    // @RequestMapping(value="/editsave",method = RequestMethod.POST)    
-    // public String editsave(@ModelAttribute("post") Post p){    
-    //     post.update(p);    
-    //     return "redirect:/viewpost";    
-    // }    
-    // /* It deletes record for the given id in URL and redirects to /viewemp */    
-    // @RequestMapping(value="/deletepost/{id}",method = RequestMethod.GET)    
-    // public String delete(@PathVariable int id){    
-    //     post.delete(id);    
-    //     return "redirect:/viewpost";    
-    // }
-
     @GetMapping("/")
     public String viewHomePage(Model model) {
         return findPaginated(1, "title", "asc", model);
-    }
-  
-    @GetMapping("/posts")
-    public String viewPosts(Model model) {
-        List<Post> posts = postService.getAllPosts();
-        model.addAttribute("listPosts", posts);
-        return "homepage";
     }
 
     @GetMapping("/add")
@@ -77,7 +29,7 @@ public class PostController {
         return "postform";
     }
   
-    @PostMapping("/save")
+    @PostMapping("/posts/save")
     public String savePost(@ModelAttribute("post") Post post) {
         // save Post to database
         try {
@@ -85,10 +37,10 @@ public class PostController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return "redirect:/posts";
+        return "redirect:/";
     }
   
-    @GetMapping("/update/{id}")
+    @GetMapping("/posts/update/{id}")
     public String showFormForUpdate(@PathVariable( value = "id") long id, Model model) {
   
         Post post = postService.getPostById(id);
@@ -98,11 +50,18 @@ public class PostController {
         return "posteditform";
     }
   
-    @GetMapping("/delete/{id}")
+    @GetMapping("/posts/delete/{id}")
     public String deletePost(@PathVariable (value = "id") long id) {
   
         this.postService.deletePostById(id);
         return "redirect:/";
+    }
+
+    @GetMapping("/posts/user/{id}/posts")
+    public String getPostsByUser(@PathVariable(value = "id") Long id, Model model){
+        List<Post> posts = postService.getPostsByUser(id);
+        model.addAttribute("listPosts", posts);
+        return "redirect:/view_my_posts";
     }
 
     StringConversion s = new StringConversion();

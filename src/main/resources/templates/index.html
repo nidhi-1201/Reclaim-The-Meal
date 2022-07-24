@@ -14,6 +14,13 @@
         <h3><a th:href="@{/list_users}">List All Users</a></h3>
         <h3><a th:href="@{/register}">Register</a></h3>
         <h3><a th:href="@{/custom_login_url}">Login</a></h3>
+        <div class="container text-center">
+            <div><h1>Welcome to Reclaim The Meal</h1></div>
+            <div>
+            <h3><a th:href="@{/list_users}">List Of Posts</a></h3>
+                <div>
+        <form th:action="@{/logout}" method="post">
+        <input type="submit" value="Sign Out" />
     </div>
      
     <div class="container my-2">
@@ -50,9 +57,6 @@
             <td th:text="${post.endTime}"></td>
             <td th:text="${post.location}"></td>
             <td th:text="${post.state}"></td>
-            <td> <a th:href="@{/update/{id}(id=${post.id})}" class="btn btn-primary">Update</a>
-                <a th:href="@{/delete/{id}(id=${post.id})}" class="btn btn-danger">Delete</a>
-            </td>
             </tr>
             </tbody>
         </table>
