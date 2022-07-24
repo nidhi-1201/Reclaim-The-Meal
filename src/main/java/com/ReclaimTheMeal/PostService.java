@@ -11,4 +11,5 @@ public interface PostService {
     Page<Post> findPaginated(int pageNum, int pageSize,
                                String sortField,
                                String sortDirection);
+    List<Post> getPostsByUser(Long id);
 }

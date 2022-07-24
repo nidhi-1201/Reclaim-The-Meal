@@ -1,7 +1,8 @@
 package com.ReclaimTheMeal;
 
+import java.util.List;
+
 import javax.persistence.*;
-import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -21,9 +22,11 @@ public class User {
 	public String getPassword() {
 		return password;
 	}
+
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
 	@Column(nullable = false, length = 20)
 	private String firstName;
 	
@@ -42,9 +45,11 @@ public class User {
 	public Long getId() {
 		return id;
 	}
+
 	public void setId(Long id) {
 		this.id = id;
 	}
+
 	public String getEmail() {
 		return email;
 	}
@@ -70,14 +75,15 @@ public class User {
 	public Set<Role> getRoles() {
 		return this.roles;
 	}
-	// @OneToMany(targetEntity = Post.class,cascade = CascadeType.ALL)
-	// private List<Post> posts;
-	// public List<Post> getPosts()   
-    // {  
-    //     return posts;  
-    // }  
-    // public void setPosts(List<Post> posts)   
-    // {  
-    //     this.posts = posts;  
-    // }
+	
+	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<Post> posts;
+	public List<Post> getPosts()   
+    {  
+        return posts;  
+    }  
+    public void setPosts(List<Post> posts)   
+    {  
+        this.posts = posts;  
+    }
 }

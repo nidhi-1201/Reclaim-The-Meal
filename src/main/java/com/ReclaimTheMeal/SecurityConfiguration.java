@@ -44,7 +44,7 @@ public class SecurityConfiguration {
     
                 http.authorizeRequests()
         .antMatchers("/list_users").hasAnyAuthority("ADMIN")
-        .antMatchers("/posts").hasAnyAuthority("USER","ADMIN")
+        .antMatchers("/").hasAnyAuthority("USER","ADMIN")
         .antMatchers("/add").hasAnyAuthority("USER","ADMIN")
         .anyRequest().permitAll()
         .and()
@@ -53,7 +53,7 @@ public class SecurityConfiguration {
         .loginProcessingUrl(LOGIN_PROCESSING_URL)
         .usernameParameter("email")
         .passwordParameter("password")
-        .defaultSuccessUrl("/posts")
+        .defaultSuccessUrl("/")
         .failureHandler(authFailureHandler)
         .permitAll()
             
