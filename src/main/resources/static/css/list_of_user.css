@@ -1,0 +1,17 @@
+body {
+  background: -webkit-linear-gradient(right, rgba(170,246,131), rgba(255,0,0,0)),
+                url('/images/bg_image-1 (1).jpg') no-repeat center center / cover;
+ 
+font-family: 'Quicksand', sans-serif;
+  font-size: 16px;
+  counter-reset: Serial;
+}
+table{
+	max-width: 800px;
+}
+tr td:first-child:before
+{
+	counter-increment: Serial;
+    content: counter(Serial);
+}
+ 
