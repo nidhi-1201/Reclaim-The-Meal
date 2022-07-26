@@ -1,36 +1,45 @@
 body {
-  background: -webkit-linear-gradient(right, rgba(170,246,131), rgba(255,0,0,0)),
+ background: -webkit-linear-gradient(right, rgba(170,246,131), rgba(255,0,0,0)),
                 url('/images/bg_image-1 (1).jpg') no-repeat center center / cover;
- 
-  font-family: 'Quicksand', sans-serif;
-  font-size: 16px;
-}
-.error_msg{
-  color: #ff0000 ;
-  margin-left: 15px;
-  margin-bottom: 0px;
-}
-h1{
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: auto;
   position: relative;
-  left: 0px;
-}
-table{
-  margin-left: 150px;
-  margin-top: 20px;
-}
-input[type=text], [type=email],[type=password]{
-  border-radius: 50px;
-}
-::-webkit-input-placeholder {
-   text-align: center;
-}
-input:focus::placeholder {
+
+  font-family: 'Quicksand', sans-serif;
+    font-size: 16px;
+  }
+
+  .bg-light{
+    padding: 0px;
+  }
+  h1{
+    position: relative;
  
+  }
+
+  table{
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  input[type=text],[type=datetime-local]{
+    border-radius: 50px;
+    width: 400px;
+  }
+  
+  ::-webkit-input-placeholder {
+    text-align: center;
+ }
+
+ input:focus::placeholder {
   opacity:0.5;
 }
+
 td{
   padding-top: 0px;
 }
+
 .btn{
   border-radius: 50px;
   background-color: #AAF683;
@@ -39,11 +48,11 @@ td{
   text-align: center;
   font-size: 24px;
   padding-top: 0px;
-  width: 180px;
+  width: 1000px;
   height: 45px;
   transition: all 0.5s;
   cursor: pointer;
-  margin-left: 45px;
+  margin-left: 115px;
   box-shadow: 0 10px 20px -8px rgba(0, 0, 0,.7);
 }
 .btn{
@@ -53,12 +62,13 @@ td{
   transition: 0.5s;
 }
 .btn:after {
-  content: '»';
+  content: ">>";
   position: absolute;
   font-size: 26px;
   font-weight: bold;
   opacity: 0;
-  top: 0px;
+  top: 3px;
+
   transition: 0.5s;
 }
 .btn:hover{

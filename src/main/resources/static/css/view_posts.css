@@ -1,0 +1,77 @@
+body {
+   background: -webkit-linear-gradient(right, rgba(170,246,131), rgba(255,0,0,0)),
+                url('/images/bg_image-1 (1).jpg') no-repeat center center / cover;
+ 
+font-family: 'Quicksand', sans-serif;
+  font-size: 16px;
+}
+hr{
+  background-color: black;
+}
+h1{
+	font-size:30px;
+}
+.card{
+  margin-top:30px;
+  margin-left: 50px;
+  border: 1px solid black;
+  border-radius:5px;
+  background: rgba(255,255,255, 0.5);
+}
+.card-body{
+  text-align: left;
+  padding-left: 80px;
+}
+
+.navbar-dark .navbar-nav .active>.nav-link, .navbar-dark .navbar-nav .nav-link.active, .navbar-dark .navbar-nav .nav-link.show, .navbar-dark .navbar-nav .show>.nav-link {
+    /* color: black; */
+}
+
+.navbar-dark .navbar-nav .active>.nav-link, .navbar-dark .navbar-nav .nav-link.active, .navbar-dark .navbar-nav .nav-link.show, .navbar-dark .navbar-nav .show>.nav-link {
+    /*color: black; */
+}
+.btn{
+  border-radius: 50px;
+  background-color: #AAF683;
+  border: none;
+  color: #000;
+  text-align: center;
+  font-size: 24px;
+  padding-top: 0px;
+  width: 180px;
+  height: 45px;
+  transition: all 0.5s;
+  margin-left: 0px;
+  margin-left: 45px;
+  box-shadow: 0 10px 20px -8px rgba(0, 0, 0,.7);
+}
+.btn{
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+  color: black;
+}
+.btn:after {
+  content: '�';
+  position: absolute;
+  font-size: 26px;
+  font-weight: bold;
+  opacity: 0;
+  top: 0px;
+  right: 15px;
+  transition: 0.5s;
+}
+.btn:hover{
+  padding-right: 24px;
+  padding-left:8px;
+  color:black;
+}
+.btn:hover:after {
+  opacity: 1;
+  right: 10px;
+  color: black;
+}
+.btn a:hover{
+  color: black;
+}

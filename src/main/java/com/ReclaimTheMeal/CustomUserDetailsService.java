@@ -40,8 +40,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 			throw new UsernameNotFoundException("user not found");
 		}
 		httpSession.setAttribute("username", email);
+		httpSession.setAttribute("id", user.getId());
 		return new CustomUserDetails(user);
 	}
-
-
 }

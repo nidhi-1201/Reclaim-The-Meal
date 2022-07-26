@@ -1,44 +1,93 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <meta charset="ISO-8859-1">
-        <title>All Users</title>
-        <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
-        <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
-        <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+<head>
+  <meta charset="ISO-8859-1">
+  <title>All Users</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/fontawesome.min.css">
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href = "/css/list_of_user.css">
+   <link rel="stylesheet" href="/css/header.css">
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon (1).ico" />
+  <style>
+      .btn{
+        border-radius: 10px;
+        background-color: #AAF683;
+        border: none;
+        color: #000;
+        text-align: center;
+        font-size: 24px;
+        padding-top: 0px;
+        width: 120px;
+        height: 35px;
+        transition: all 0.5s;
+        cursor: pointer;
+        margin-left: 45px;
+        box-shadow: 0 10px 20px -8px rgba(0, 0, 0,.7);
+      }
+  </style>
 </head>
-    <body>
-        <div class="container text-center">
-            <div><h1>List of all Users</h1></div>
+<body>
+	 <nav class="navbar navbar-expand-lg navbar-dark shadow-5-strong">
+      	<div class="container-fluid">
+       		 <a class="navbar-brand" th:href="@{/}"><img src="/images/Reclaim-the-meal-logo (1).png" alt = "logo" height="80px;"></a>
+       		 <button class="navbar-toggler ml-auto hidden-sm-up float-xs-right" type="button"
+       		 	data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        	 	aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        	 	<i class='fa fa-bars green-color'></i>
+       		 </button>
+       		 <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        		  <ul class="navbar-nav ml-auto mb-2 mb-lg-0"> 
+         		 	<div sec:authorize="!isAuthenticated()"><a class="nav-link" th:href="@{/register}"><b>Register</b></a></div>
+       				<div sec:authorize="isAuthenticated() and hasAuthority('ADMIN')"><a class="nav-link" th:href="@{/list_users}"><b>List Users</b></a></div>
+       				<div sec:authorize="isAuthenticated() and hasAuthority('USER') "> <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Profile
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" th:href="@{/add}">Add Posts</a>
+          <a class="dropdown-item" th:href="@{/posts/user/{id}/posts(id=${user.id})}">View My Posts</a>
+          <a class="dropdown-item" th:href="@{/users/update/{id}(id=${user.id})}">Update Profile</a></div>
+      </li></div>
+       		 <li class="nav-item  ml-auto hidden-sm-up float-xs-right">
+             	 <a class="nav-link" th:href="@{/about_us}"><b>About us</b></a>
+            </li>
+            <li class="nav-item  ml-auto hidden-sm-up float-xs-right">
+              <a class="nav-link" th:href="@{/contact_us}"><b>Contact us</b></a>
+            </li>
+             <li class="nav-item  ml-auto hidden-sm-up float-xs-right">
+              <div sec:authorize="!isAuthenticated()">  <a class="nav-link" th:href="@{/custom_login_url}"><b>Sign In</b></a></div>
+               <div sec:authorize="isAuthenticated()">  <a class="nav-link" th:href="@{/logout}"><b>Sign Out</b></a></div>
+    		  </div>
+             </li>   
+          </ul>
         </div>
-        <div>
-            <form th:action="@{/logout}" method="post">
-                <p>Welcome<b>[[${#request.userPrincipal.principal.fullName}]]</b>
-                </p>
-                <input type="submit" value="Sign Out" />
-            </form>
-        </div>
-        <div>
-            <table class="table table-striped table-bordered">
-                <thead class="thead-dark">
-                    <tr>
-                        <th>User ID</th>
-                        <th>E-mail</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr th:each="user: ${listUsers}">
-                        <td th:text="${user.id}">User ID</td>
-                        <td th:text="${user.email}">E-Mail</td>
-                        <td th:text="${user.firstName}">First Name</td>
-                        <td th:text="${user.lastName}">Last Name</td>
-                        <td> <a th:href="@{/users/delete/{id}(id=${user.id})}" class="btn btn-danger">Delete</a>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </body>
+    </nav>
+<center><table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Sr. No.</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">E-mail ID</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr  th:each="user: ${listUsers}">
+      <td scope="row"></td>
+      <td th:text="${user.firstName}"></td>
+      <td th:text="${user.lastName}"></td>
+      <td th:text="${user.email}"></td>
+      <td th:text="${user.lastName}"></td>
+      <td><a th:href="@{/users/delete/{id}(id=${user.id})}"><input type="button" value="Delete" class = "btn"></a></td>
+    </tr>
+  </tbody>
+</table></center>
+</body>
 </html>
