@@ -14,7 +14,7 @@ public class Post {
 	@Column(nullable = false, unique = true, length = 45)
 	private String title;
 	
-	@Column(nullable = false, length = 120)
+	@Column(nullable = false, length = 150000)
 	private String description;
 	
 	@Column(name = "start_time")
