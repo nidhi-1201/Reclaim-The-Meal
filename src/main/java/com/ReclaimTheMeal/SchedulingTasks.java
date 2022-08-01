@@ -24,7 +24,7 @@ public class SchedulingTasks {
                 User user = post.getUser();
                 if(user != null){
                     try{
-                        emailSenderService.sendEmail("reclaimthemeal@gmail.com", user.getEmail(), "Sending email using Spring Booot", "Hey, How are you!! Sending an email for testing purpose!!");
+                        emailSenderService.sendEmail("reclaimthemeal@gmail.com", user.getEmail(), "Sending email to inform about you post expiration", "Hey, How are you!! This email is to inform you that your post on Reclaim the meal application is deleted because it has fallen past it's expiration time.");
                         postRepository.deleteByDateTimeEquals(new Date());
                     }
                     catch(MailException e) {
